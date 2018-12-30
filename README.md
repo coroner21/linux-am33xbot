@@ -1,5 +1,5 @@
 # linux-am33xbot
-Arch Linux ARM Kernel with botic patches (for Beaglebone Black / Wireless). Please refer to [DiyAudio thread](https://www.diyaudio.com/forums/twisted-pear/258254-support-botic-linux-driver.html) for more information on the driver and its development and checkout Cronus and Hermes from [Twistedpearaudio](http://twistedpearaudio.com/landing.aspx) for the background on the required cape for the Beaglebone board.
+Arch Linux ARM Kernel with botic patches (for Beaglebone Black / Wireless). Please refer to [DiyAudio thread](https://www.diyaudio.com/forums/twisted-pear/258254-support-botic-linux-driver.html) for more information on the driver and its development and checkout Cronus and Hermes-BBB from [Twistedpearaudio](http://twistedpearaudio.com/landing.aspx) for the background on the required cape for the Beaglebone board. Credit for the development of the cape and driver to Russ White from TPA and [Miero](https://github.com/miero).
 
 Follow these steps to build a boticized kernel for recent Arch Linux ARM:
 
