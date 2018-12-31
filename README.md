@@ -5,10 +5,11 @@ Follow these steps to build a boticized kernel for recent Arch Linux ARM:
 
 1. Make sure you have either a VM or a native install of Arch Linux (x86-64) and that you are able to build packages: `pacman -S --needed base-devel`
 2. Install the cross-compiler required to build the kernel for the armv7h architecture (AUR: [arm-linux-gnueabihf-gcc-linaro-bin](https://aur.archlinux.org/packages/arm-linux-gnueabihf-gcc-linaro-bin/))
-3. Clone this repository and run `CARCH=armv7h makepkg -A` in the created folder
-4. Copy the created package (pkg.tar.xz file) to the BBB / BBBW
-5. Uninstall the standard kernel package (`pacman -R linux-am33x`). ATTENTION: You need to install the new kernel before rebooting / power off
-6. Install the package with `pacman -U`
+3. Clone this repository and delete the `.git`hidden folder created by the git tool (otherwise some of the patches will not apply)
+4. Run `CARCH=armv7h makepkg -A` in the created folder to build the package
+5. Copy the created package (pkg.tar.xz file) to the BBB / BBBW
+6. Uninstall the standard kernel package (`pacman -R linux-am33x`). ATTENTION: You need to install the new kernel before rebooting / power off
+7. Install the package with `pacman -U`
 
 Before rebooting ensure that Arch Linux ARM is configured to load the required botic overlay and edit /boot/boot.txt accordingly, see following example (which disables also HDMI and the onboard oscillator):
 ```
