@@ -1,6 +1,6 @@
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c linux-am33x/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c
---- linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c	2018-10-22 08:37:37.000000000 +0200
-+++ linux-am33x/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c	2018-12-30 13:23:28.604277899 +0100
+diff -Naur linux-am33xbot-old/src/linux-4.20/sound/soc/davinci/davinci-mcasp.c linux-am33xbot-new/src/linux-4.20/sound/soc/davinci/davinci-mcasp.c
+--- linux-am33xbot-old/src/linux-4.20/sound/soc/davinci/davinci-mcasp.c	2019-01-02 22:06:36.486666627 +0100
++++ linux-am33xbot-new/src/linux-4.20/sound/soc/davinci/davinci-mcasp.c	2019-01-02 21:48:08.919999964 +0100
 @@ -743,13 +743,13 @@
  }
  
@@ -63,8 +63,8 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c li
  	}
  
  	return 0;
-@@ -1041,12 +1050,28 @@
- 	return error_ppm;
+@@ -1077,12 +1086,28 @@
+ 	return fifo_use / substream->runtime->channels;
  }
  
 +static int is_dsd(snd_pcm_format_t format)
@@ -92,7 +92,7 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c li
  	int channels = params_channels(params);
  	int period_size = params_period_size(params);
  	int ret;
-@@ -1071,7 +1096,7 @@
+@@ -1107,7 +1132,7 @@
  	}
  
  	ret = mcasp_common_hw_param(mcasp, substream->stream,
@@ -101,7 +101,7 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c li
  	if (ret)
  		return ret;
  
-@@ -1079,7 +1104,7 @@
+@@ -1115,7 +1140,7 @@
  		ret = mcasp_dit_hw_param(mcasp, params_rate(params));
  	else
  		ret = mcasp_i2s_hw_param(mcasp, substream->stream,
@@ -110,7 +110,7 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c li
  
  	if (ret)
  		return ret;
-@@ -1110,6 +1135,18 @@
+@@ -1146,6 +1171,18 @@
  		word_length = 32;
  		break;
  
@@ -129,7 +129,7 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c li
  	default:
  		printk(KERN_WARNING "davinci-mcasp: unsupported PCM format");
  		return -EINVAL;
-@@ -1150,7 +1187,7 @@
+@@ -1186,7 +1223,7 @@
  
  static const unsigned int davinci_mcasp_dai_rates[] = {
  	8000, 11025, 16000, 22050, 32000, 44100, 48000, 64000,
@@ -138,7 +138,7 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c li
  };
  
  #define DAVINCI_MAX_RATE_ERROR_PPM 1000
-@@ -1450,7 +1487,7 @@
+@@ -1487,7 +1524,7 @@
  #define davinci_mcasp_resume NULL
  #endif
  
@@ -147,7 +147,7 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/davinci/davinci-mcasp.c li
  
  #define DAVINCI_MCASP_PCM_FMTS (SNDRV_PCM_FMTBIT_S8 | \
  				SNDRV_PCM_FMTBIT_U8 | \
-@@ -1461,7 +1498,10 @@
+@@ -1498,7 +1535,10 @@
  				SNDRV_PCM_FMTBIT_S24_3LE | \
  				SNDRV_PCM_FMTBIT_U24_3LE | \
  				SNDRV_PCM_FMTBIT_S32_LE | \

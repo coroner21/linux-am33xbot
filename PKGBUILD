@@ -4,19 +4,19 @@
 buildarch=4
 
 pkgbase=linux-am33xbot
-_srcname=linux-4.19
+_srcname=linux-4.20
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=4.19.12
+pkgver=4.20.0
 pkgrel=1
-rcnrel=bone16
+rcnrel=bone0
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+#        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "http://rcn-ee.com/deb/sid-armhf/v${pkgver}-${rcnrel}/patch-${pkgver%.0}-${rcnrel}.diff.gz"
         "git+https://github.com/coroner21/bb.org-overlays.git"
         '0001-add-lcd-cape-for-chiliboard.patch'
@@ -27,24 +27,24 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'mcasp_dsd.patch'
 	'mcasp-inactive-serializers.patch'
 	'new_botic_card_codec.patch')
-md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '1e33e1e7f80f8dbe4a0274ba274626b4'
-         '46a5b3cd13b31f7760359fcce5fee985'
+md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
+         #'1e33e1e7f80f8dbe4a0274ba274626b4'
+	 '47f1f2b05ae718b4a7b0a15447444efd'
 	 'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
-	 'c5a6db6aef74881169e040bfb7494b87'
+	 '085ff7d3dcba0ee2f43bc0adc5161db5'
 	 '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
-	 'd987f6b27b6a5b27fccaeed45ff05f88'
+	 '2dd4b3ed4a235f3524d190800f307fc2'
 	 '5a746615701bc32f76483403701d2c85'
-	 '724e12febdbedff04e3ffc9a876b12bc')
+	 '9feccc40d11d0b47b25715b8d1173753')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  git apply --whitespace=nowarn "${srcdir}/patch-${pkgver}"
+  #git apply --whitespace=nowarn "${srcdir}/patch-${pkgver}"
 
   # RCN patch
   git apply ../patch-${pkgver%.0}-${rcnrel}.diff
