@@ -19,7 +19,6 @@ if test -n ${distro_bootpart}; then setenv bootpart ${distro_bootpart}; else set
 part uuid ${devtype} ${devnum}:${bootpart} uuid
 
 setenv bootargs "console=tty0 console=${console} root=PARTUUID=${uuid} rw rootwait"
-setenv fdtfile "am335x-boneblack-wireless.dtb"
 
 if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
   gpio set 54
@@ -40,7 +39,6 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
     fdt rm /clk_mcasp0
     # enable Botic overlay
     load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BOTIC-SABRE32-00A0.dtbo
-    #load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BB-HERMES-TEST.dtbo
     fdt resize ${filesize}
     fdt apply 0x88060000
     
