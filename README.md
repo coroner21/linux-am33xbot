@@ -19,7 +19,6 @@ if test -n ${distro_bootpart}; then setenv bootpart ${distro_bootpart}; else set
 part uuid ${devtype} ${devnum}:${bootpart} uuid
 
 setenv bootargs "console=tty0 console=${console} root=PARTUUID=${uuid} rw rootwait"
-setenv fdtfile "am335x-boneblack-wireless.dtb"
 
 if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
   gpio set 54
@@ -39,8 +38,10 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
     fdt rm /clk_mcasp0_fixed
     fdt rm /clk_mcasp0
     # enable Botic overlay
+    # use below line only if you have ES9018 DAC connected to the I2C header of the Hermes-BBB module
+    # otherwise comment it out and uncomment the next line
     load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BOTIC-SABRE32-00A0.dtbo
-    #load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BB-HERMES-TEST.dtbo
+    #load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BOTIC-00A0.dtbo
     fdt resize ${filesize}
     fdt apply 0x88060000
     
