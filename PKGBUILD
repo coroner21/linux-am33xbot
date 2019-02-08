@@ -7,9 +7,9 @@ pkgbase=linux-am33xbot
 _srcname=linux-4.20
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=4.20.4
+pkgver=4.20.6
 pkgrel=1
-rcnrel=bone4
+rcnrel=bone6
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -28,9 +28,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'mcasp-inactive-serializers.patch'
 	'new_botic_card_codec.patch')
 md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
-	 '506177ba35245726f7e58a2220ddc646'
-         '59106d3dcf3b24a88745c765326edd52'
-	 'SKIP'
+	 'b8faceed2182f048279e400846df8ab7'
+	 '0b92d3068d0dfe43166dabbf4e0ca3c1'
+         'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
 	 '09dd0ee31eb1f76f728bd07a0aeafa55'
