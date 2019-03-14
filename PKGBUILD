@@ -7,16 +7,16 @@ pkgbase=linux-am33xbot
 _srcname=linux-5.0
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
-rcnrel=bone2
+rcnrel=bone3
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         "http://rcn-ee.com/deb/sid-armhf/v${pkgver}-${rcnrel}/patch-${pkgver%.0}-${rcnrel}.diff.gz"
         "git+https://github.com/coroner21/bb.org-overlays.git"
         '0001-add-lcd-cape-for-chiliboard.patch'
@@ -29,11 +29,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'new_botic_card_codec.patch'
 )
 md5sums=('7381ce8aac80a01448e065ce795c19c0'
-         '961820b8c57827149d824ee1b486c521'
+         '488f0f1b00a0861b4c3ddf578f1bd548'
+         'ce136b11b16e955095720c7ffe0ca1f7'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
-         'adef75581b6339828b0ce58a6f17d51b'
+         '7c2eeefdd2fef86d9c20582926a10976'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          'd81c5e0cadf110f1392717f7b873ebcf'
@@ -44,7 +45,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #git apply --whitespace=nowarn "${srcdir}/patch-${pkgver}"
+  git apply --whitespace=nowarn "${srcdir}/patch-${pkgver}"
 
   # RCN patch
   git apply ../patch-${pkgver%.0}-${rcnrel}.diff
@@ -96,7 +97,7 @@ build() {
   #yes "" | make config
 
   # build!
-  make -j9 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+  make -j5 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 
   # build overlays
   cd "${srcdir}/bb.org-overlays"
