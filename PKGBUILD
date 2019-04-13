@@ -7,9 +7,9 @@ pkgbase=linux-am33xbot
 _srcname=linux-5.0
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.0.1
+pkgver=5.0.3
 pkgrel=1
-rcnrel=bone3
+rcnrel=bone5
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -29,17 +29,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'new_botic_card_codec.patch'
 )
 md5sums=('7381ce8aac80a01448e065ce795c19c0'
-         '488f0f1b00a0861b4c3ddf578f1bd548'
-         'ce136b11b16e955095720c7ffe0ca1f7'
+         'de30e6d9ebdfe03254536bf4e1bdd857'
+         '147f48c1f60dd82e098e4e41db977c28'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
-         '7c2eeefdd2fef86d9c20582926a10976'
+         'aa39dc537e82f8aa85380163fc0609bd'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          'd81c5e0cadf110f1392717f7b873ebcf'
          '210e1526a6946973bfe5de6601655a08'
-         '3bf9c09d56449ca038b05f142de3633f')
+         '592ae9a1faa0f4a08f518e654ea994ee')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
