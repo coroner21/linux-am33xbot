@@ -7,9 +7,9 @@ pkgbase=linux-am33xbot
 _srcname=linux-5.0
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.0.3
+pkgver=5.0.7
 pkgrel=1
-rcnrel=bone5
+rcnrel=bone9
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -27,10 +27,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'mcasp_dsd.patch'
 	'mcasp-inactive-serializers.patch'
 	'new_botic_card_codec.patch'
+	'es9018k2m.patch'
 )
 md5sums=('7381ce8aac80a01448e065ce795c19c0'
-         'de30e6d9ebdfe03254536bf4e1bdd857'
-         '147f48c1f60dd82e098e4e41db977c28'
+         '59af0bf9198a90a79da680a675df17e0'
+         '8f1db558ee0732d297a73b4a5f6e36f9'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
@@ -39,7 +40,8 @@ md5sums=('7381ce8aac80a01448e065ce795c19c0'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          'd81c5e0cadf110f1392717f7b873ebcf'
          '210e1526a6946973bfe5de6601655a08'
-         '592ae9a1faa0f4a08f518e654ea994ee')
+         '592ae9a1faa0f4a08f518e654ea994ee'
+         'ba6de8868d15fc0eba7933ed0ec59749')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -57,6 +59,7 @@ prepare() {
   patch -p1 < ../mcasp_dsd.patch
   patch -p1 < ../mcasp-inactive-serializers.patch
   patch -p1 < ../new_botic_card_codec.patch
+  patch -p1 < ../es9018k2m.patch
 
   cat "${srcdir}/config" > ./.config
 
