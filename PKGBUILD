@@ -35,13 +35,13 @@ md5sums=('7381ce8aac80a01448e065ce795c19c0'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
-         'aa39dc537e82f8aa85380163fc0609bd'
+         '66087c34ec610387c937049757abf1a5'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          'd81c5e0cadf110f1392717f7b873ebcf'
          '210e1526a6946973bfe5de6601655a08'
          '592ae9a1faa0f4a08f518e654ea994ee'
-         'ba6de8868d15fc0eba7933ed0ec59749')
+         'c52e4626500385649c229bc254dd32a4')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
