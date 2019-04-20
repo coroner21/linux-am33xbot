@@ -24,10 +24,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'config'
         'linux.preset'
         '99-linux.hook'
-	'mcasp_dsd.patch'
+	'mcasp-dsd.patch'
 	'mcasp-inactive-serializers.patch'
-	'new_botic_card_codec.patch'
-	'es9018k2m.patch'
+	'botic-card.patch'
+	'botic-codec.patch'
+	'sabre32-codec.patch'
+	'es9018k2m-codec.patch'
 )
 md5sums=('7381ce8aac80a01448e065ce795c19c0'
          '59af0bf9198a90a79da680a675df17e0'
@@ -40,8 +42,10 @@ md5sums=('7381ce8aac80a01448e065ce795c19c0'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          'd81c5e0cadf110f1392717f7b873ebcf'
          '210e1526a6946973bfe5de6601655a08'
-         '592ae9a1faa0f4a08f518e654ea994ee'
-         'c52e4626500385649c229bc254dd32a4')
+         'eb5334591a06c9400f6b09f9d2bb9104'
+         'fe529c57178eeff1da6050adfda34eb6'
+         'd03a216f247e58357faacb8dd7761bf6'
+         '92a0d6899992e9e3beb1178551d6f5ea')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -56,10 +60,12 @@ prepare() {
   git apply ../0001-add-lcd-cape-for-chiliboard.patch
 
   # BOTIC patches
-  patch -p1 < ../mcasp_dsd.patch
+  patch -p1 < ../mcasp-dsd.patch
   patch -p1 < ../mcasp-inactive-serializers.patch
-  patch -p1 < ../new_botic_card_codec.patch
-  patch -p1 < ../es9018k2m.patch
+  patch -p1 < ../botic-codec.patch
+  patch -p1 < ../botic-card.patch
+  patch -p1 < ../es9018k2m-codec.patch
+  patch -p1 < ../sabre32-codec.patch
 
   cat "${srcdir}/config" > ./.config
 
