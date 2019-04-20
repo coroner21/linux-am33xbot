@@ -39,8 +39,10 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
     fdt rm /clk_mcasp0
     # enable Botic overlay
     # use below line only if you have ES9018 DAC connected to the I2C header of the Hermes-BBB module
-    # otherwise comment it out and uncomment the next line
     load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BOTIC-SABRE32-00A0.dtbo
+    # in case you want to use ES9018K2M based DAC, you can use the following overlay line
+    #load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BOTIC-ES9018K2M-00A0.dtbo
+    # for a generic I2S DAC connected to the Cronus board you can use the following dummy codec overlay
     #load ${devtype} ${devnum}:${bootpart} 0x88060000 /lib/firmware/BOTIC-00A0.dtbo
     fdt resize ${filesize}
     fdt apply 0x88060000
