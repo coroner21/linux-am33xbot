@@ -1,7 +1,7 @@
-diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/davinci-mcasp.c
---- linux-5.0-old/sound/soc/ti/davinci-mcasp.c	2019-03-04 00:21:29.000000000 +0100
-+++ linux-5.0/sound/soc/ti/davinci-mcasp.c	2019-03-06 21:34:27.372659035 +0100
-@@ -804,13 +804,13 @@
+diff -Naur linux-5.1_clean/sound/soc/ti/davinci-mcasp.c linux-5.1/sound/soc/ti/davinci-mcasp.c
+--- linux-5.1_clean/sound/soc/ti/davinci-mcasp.c	2019-05-06 02:42:58.000000000 +0200
++++ linux-5.1/sound/soc/ti/davinci-mcasp.c	2019-05-25 11:07:50.027528308 +0200
+@@ -810,13 +810,13 @@
  }
  
  static int mcasp_common_hw_param(struct davinci_mcasp *mcasp, int stream,
@@ -17,7 +17,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  	u8 max_active_serializers = (channels + slots - 1) / slots;
  	int active_serializers, numevt;
  	u32 reg;
-@@ -919,13 +919,14 @@
+@@ -922,13 +922,14 @@
  }
  
  static int mcasp_i2s_hw_param(struct davinci_mcasp *mcasp, int stream,
@@ -33,7 +33,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  
  	total_slots = mcasp->tdm_slots;
  
-@@ -964,11 +965,19 @@
+@@ -967,11 +968,19 @@
  	if (!mcasp->dat_port)
  		busel = TXSEL;
  
@@ -54,7 +54,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  	} else if (stream == SNDRV_PCM_STREAM_CAPTURE) {
  		mcasp_set_reg(mcasp, DAVINCI_MCASP_RXTDM_REG, mask);
  		mcasp_set_bits(mcasp, DAVINCI_MCASP_RXFMT_REG, busel | RXORD);
-@@ -981,7 +990,7 @@
+@@ -984,7 +993,7 @@
  		 */
  		if (mcasp_is_synchronous(mcasp) && !mcasp->channels)
  			mcasp_mod_bits(mcasp, DAVINCI_MCASP_TXFMCTL_REG,
@@ -63,7 +63,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  	}
  
  	return 0;
-@@ -1144,12 +1153,28 @@
+@@ -1147,12 +1156,28 @@
  	return fifo_use / substream->runtime->channels;
  }
  
@@ -92,7 +92,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  	int channels = params_channels(params);
  	int period_size = params_period_size(params);
  	int ret;
-@@ -1174,7 +1199,7 @@
+@@ -1177,7 +1202,7 @@
  	}
  
  	ret = mcasp_common_hw_param(mcasp, substream->stream,
@@ -101,7 +101,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  	if (ret)
  		return ret;
  
-@@ -1182,7 +1207,7 @@
+@@ -1185,7 +1210,7 @@
  		ret = mcasp_dit_hw_param(mcasp, params_rate(params));
  	else
  		ret = mcasp_i2s_hw_param(mcasp, substream->stream,
@@ -110,7 +110,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  
  	if (ret)
  		return ret;
-@@ -1213,6 +1238,18 @@
+@@ -1216,6 +1241,18 @@
  		word_length = 32;
  		break;
  
@@ -129,7 +129,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  	default:
  		printk(KERN_WARNING "davinci-mcasp: unsupported PCM format");
  		return -EINVAL;
-@@ -1253,7 +1290,7 @@
+@@ -1256,7 +1293,7 @@
  
  static const unsigned int davinci_mcasp_dai_rates[] = {
  	8000, 11025, 16000, 22050, 32000, 44100, 48000, 64000,
@@ -138,7 +138,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  };
  
  #define DAVINCI_MAX_RATE_ERROR_PPM 1000
-@@ -1486,7 +1523,7 @@
+@@ -1489,7 +1526,7 @@
  	return 0;
  }
  
@@ -147,7 +147,7 @@ diff -Naur linux-5.0-old/sound/soc/ti/davinci-mcasp.c linux-5.0/sound/soc/ti/dav
  
  #define DAVINCI_MCASP_PCM_FMTS (SNDRV_PCM_FMTBIT_S8 | \
  				SNDRV_PCM_FMTBIT_U8 | \
-@@ -1497,7 +1534,10 @@
+@@ -1500,7 +1537,10 @@
  				SNDRV_PCM_FMTBIT_S24_3LE | \
  				SNDRV_PCM_FMTBIT_U24_3LE | \
  				SNDRV_PCM_FMTBIT_S32_LE | \

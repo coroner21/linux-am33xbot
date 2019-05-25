@@ -1,6 +1,6 @@
-diff -Naur linux-5.0_old/sound/soc/generic/botic-card.c linux-5.0/sound/soc/generic/botic-card.c
---- linux-5.0_old/sound/soc/generic/botic-card.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-5.0/sound/soc/generic/botic-card.c	2019-04-20 13:50:14.429306907 +0200
+diff -Naur linux-5.1_clean/sound/soc/generic/botic-card.c linux-5.1/sound/soc/generic/botic-card.c
+--- linux-5.1_clean/sound/soc/generic/botic-card.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-5.1/sound/soc/generic/botic-card.c	2019-05-25 11:13:09.267065910 +0200
 @@ -0,0 +1,496 @@
 +/*
 + * ASoC simple sound card support
@@ -498,12 +498,12 @@ diff -Naur linux-5.0_old/sound/soc/generic/botic-card.c linux-5.0/sound/soc/gene
 +MODULE_DESCRIPTION("ASoC Botic sound card");
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:asoc-botic-card");
-diff -Naur linux-5.0_old/sound/soc/generic/Kconfig linux-5.0/sound/soc/generic/Kconfig
---- linux-5.0_old/sound/soc/generic/Kconfig	2019-04-20 13:48:44.167531901 +0200
-+++ linux-5.0/sound/soc/generic/Kconfig	2019-04-20 13:50:14.429306907 +0200
-@@ -16,6 +16,20 @@
- 	  This option enables generic simple SCU sound card support.
- 	  It supports DPCM of multi CPU single Codec system.
+diff -Naur linux-5.1_clean/sound/soc/generic/Kconfig linux-5.1/sound/soc/generic/Kconfig
+--- linux-5.1_clean/sound/soc/generic/Kconfig	2019-05-06 02:42:58.000000000 +0200
++++ linux-5.1/sound/soc/generic/Kconfig	2019-05-25 11:13:09.267065910 +0200
+@@ -8,6 +8,20 @@
+ 	  This option enables generic simple sound card support
+ 	  It also support DPCM of multi CPU single Codec ststem.
  
 +config SND_BOTIC_CARD
 + 	tristate "ASoC Botic sound card support"
@@ -522,18 +522,16 @@ diff -Naur linux-5.0_old/sound/soc/generic/Kconfig linux-5.0/sound/soc/generic/K
  config SND_AUDIO_GRAPH_CARD
  	tristate "ASoC Audio Graph sound card support"
  	depends on OF
-diff -Naur linux-5.0_old/sound/soc/generic/Makefile linux-5.0/sound/soc/generic/Makefile
---- linux-5.0_old/sound/soc/generic/Makefile	2019-04-20 13:48:44.167531901 +0200
-+++ linux-5.0/sound/soc/generic/Makefile	2019-04-20 13:50:14.429306907 +0200
-@@ -4,9 +4,11 @@
- snd-soc-simple-scu-card-objs	:= simple-scu-card.o
+diff -Naur linux-5.1_clean/sound/soc/generic/Makefile linux-5.1/sound/soc/generic/Makefile
+--- linux-5.1_clean/sound/soc/generic/Makefile	2019-05-06 02:42:58.000000000 +0200
++++ linux-5.1/sound/soc/generic/Makefile	2019-05-25 11:16:32.461944391 +0200
+@@ -2,7 +2,9 @@
+ snd-soc-simple-card-utils-objs	:= simple-card-utils.o
+ snd-soc-simple-card-objs	:= simple-card.o
  snd-soc-audio-graph-card-objs	:= audio-graph-card.o
- snd-soc-audio-graph-scu-card-objs	:= audio-graph-scu-card.o
-+snd-soc-botic-objs	:= botic-card.o
++snd-soc-botic-objs		:= botic-card.o
  
  obj-$(CONFIG_SND_SIMPLE_CARD_UTILS)	+= snd-soc-simple-card-utils.o
  obj-$(CONFIG_SND_SIMPLE_CARD)		+= snd-soc-simple-card.o
-+obj-$(CONFIG_SND_BOTIC_CARD)	+= snd-soc-botic.o
- obj-$(CONFIG_SND_SIMPLE_SCU_CARD)	+= snd-soc-simple-scu-card.o
  obj-$(CONFIG_SND_AUDIO_GRAPH_CARD)	+= snd-soc-audio-graph-card.o
- obj-$(CONFIG_SND_AUDIO_GRAPH_SCU_CARD)	+= snd-soc-audio-graph-scu-card.o
++obj-$(CONFIG_SND_BOTIC_CARD)		+= snd-soc-botic.o

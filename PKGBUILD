@@ -4,12 +4,12 @@
 buildarch=4
 
 pkgbase=linux-am33xbot
-_srcname=linux-5.0
+_srcname=linux-5.1
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.0.7
+pkgver=5.1.3
 pkgrel=1
-rcnrel=bone9
+rcnrel=bone3
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -31,25 +31,26 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'sabre32-codec.patch'
 	'es9018k2m-codec.patch'
 )
-md5sums=('7381ce8aac80a01448e065ce795c19c0'
-         '59af0bf9198a90a79da680a675df17e0'
-         '8f1db558ee0732d297a73b4a5f6e36f9'
+md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
+         '06ee36333ce2f480ae848320790cebc1'
+         'fa55708417da3ad57b304259234bb38b'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
-         '66087c34ec610387c937049757abf1a5'
+         '63214b5a78bf8453f7efa1c24573045d'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
-         'd81c5e0cadf110f1392717f7b873ebcf'
-         '210e1526a6946973bfe5de6601655a08'
-         'eb5334591a06c9400f6b09f9d2bb9104'
-         'fe529c57178eeff1da6050adfda34eb6'
-         'd03a216f247e58357faacb8dd7761bf6'
-         '92a0d6899992e9e3beb1178551d6f5ea')
+         '50380efe960555a1eb1671550302927c'
+         'cab3d0679039181f2070cd2f8857e003'
+         'ca102da30f2e488d06516bd8b8987877'
+         '60f9f8dd3224d9f4f61aa620b8a63494'
+         '18529c0a52fff3d1deaf0e1628f169f2'
+         'c52e4626500385649c229bc254dd32a4')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-
+  gzip -df ../patch-${pkgver%.0}-${rcnrel}.diff.gz
+  
   # add upstream patch
   git apply --whitespace=nowarn "${srcdir}/patch-${pkgver}"
 
