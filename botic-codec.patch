@@ -28,7 +28,7 @@ diff -Naur linux-5.1_clean/sound/soc/codecs/botic-codec.c linux-5.1/sound/soc/co
 +            SNDRV_PCM_FMTBIT_S24_3LE | \
 +            SNDRV_PCM_FMTBIT_S24_LE | \
 +            SNDRV_PCM_FMTBIT_S32_LE | \
-+            SNDRV_PCM_FMTBIT_DSD_U16_LE | \
++            SNDRV_PCM_FMTBIT_DSD_U32_LE | \
 +            0)
 +
 +static struct snd_soc_dai_driver botic_codec_dai = {

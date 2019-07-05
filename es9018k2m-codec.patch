@@ -97,7 +97,7 @@ diff -Naur linux-5.0_old/sound/soc/codecs/es9018k2m.c linux-5.0/sound/soc/codecs
 +            SNDRV_PCM_FMTBIT_S24_3LE | \
 +            SNDRV_PCM_FMTBIT_S24_LE | \
 +            SNDRV_PCM_FMTBIT_S32_LE | \
-+            SNDRV_PCM_FMTBIT_DSD_U16_LE | \
++            SNDRV_PCM_FMTBIT_DSD_U32_LE | \
 +            0)
 +
 +

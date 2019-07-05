@@ -89,7 +89,7 @@ diff -Naur linux-5.1_clean/sound/soc/codecs/sabre32.c linux-5.1/sound/soc/codecs
 +            SNDRV_PCM_FMTBIT_S24_3LE | \
 +            SNDRV_PCM_FMTBIT_S24_LE | \
 +            SNDRV_PCM_FMTBIT_S32_LE | \
-+            SNDRV_PCM_FMTBIT_DSD_U16_LE | \
++            SNDRV_PCM_FMTBIT_DSD_U32_LE | \
 +            0)
 +
 +static const struct snd_soc_dai_ops sabre32_codec_dai_ops;

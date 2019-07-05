@@ -7,9 +7,9 @@ pkgbase=linux-am33xbot
 _srcname=linux-5.1
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.1.5
+pkgver=5.1.15
 pkgrel=1
-rcnrel=bone5
+rcnrel=bone11
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -32,20 +32,20 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'es9018k2m-codec.patch'
 )
 md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
-         '010a7425cb63f64c8122685d0c860f16'
-         '73cac5457befdd28da1061c443f93ced'
+         'aed4686410e23561f67f5c512d0a6245'
+         '58e044f59d184dd78acf078e74c0d1a6'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
          '5698870a716fed205215d258cc71e296'
-         '39f3c1dc19b472e2e07e8aca07b64396'
+         '629b39476046c2f2a8912ceb2a046ef4'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          '50380efe960555a1eb1671550302927c'
          'cab3d0679039181f2070cd2f8857e003'
          'ca102da30f2e488d06516bd8b8987877'
-         '60f9f8dd3224d9f4f61aa620b8a63494'
-         '18529c0a52fff3d1deaf0e1628f169f2'
-         'c52e4626500385649c229bc254dd32a4')
+         'db1ded66d885e379f21417024941138d'
+         '50dd4b76d9ae1e9c8ceaf520eba48038'
+         '4477af3e30440e37a2fb4934b3ef92bb')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -107,7 +107,7 @@ build() {
   #yes "" | make config
 
   # build!
-  make -j5 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+  make -j9 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 
   # build overlays
   cd "${srcdir}/bb.org-overlays"
