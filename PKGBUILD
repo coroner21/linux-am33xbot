@@ -20,7 +20,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://rcn-ee.com/deb/sid-armhf/v${pkgver}-${rcnrel}/patch-${pkgver%.0}-${rcnrel}.diff.gz"
         "git+https://github.com/coroner21/bb.org-overlays.git"
         '0001-add-lcd-cape-for-chiliboard.patch'
-        '0001-enable-dtc-1.4.5-flags.patch'
         'config'
         'linux.preset'
         '99-linux.hook'
@@ -36,7 +35,6 @@ md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
          '58e044f59d184dd78acf078e74c0d1a6'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
-         '5698870a716fed205215d258cc71e296'
          '629b39476046c2f2a8912ceb2a046ef4'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
@@ -75,9 +73,6 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-
-  cd ../bb.org-overlays
-  git apply ../0001-enable-dtc-1.4.5-flags.patch
 }
 
 build() {
