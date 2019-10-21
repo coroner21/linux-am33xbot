@@ -4,12 +4,13 @@
 buildarch=4
 
 pkgbase=linux-am33xbot
-_srcname=linux-5.1
+_srcname=linux-5.3
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.1.15
+pkgver=5.3.7
 pkgrel=1
-rcnrel=bone11
+rcnver=5.3.6
+rcnrel=bone12
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,52 +18,49 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        "http://rcn-ee.com/deb/sid-armhf/v${pkgver}-${rcnrel}/patch-${pkgver%.0}-${rcnrel}.diff.gz"
+        "http://rcn-ee.com/deb/sid-armhf/v${rcnver}-${rcnrel}/patch-${rcnver%.0}-${rcnrel}.diff.gz"
         "git+https://github.com/coroner21/bb.org-overlays.git"
         '0001-add-lcd-cape-for-chiliboard.patch'
         'config'
         'linux.preset'
         '99-linux.hook'
 	'mcasp-dsd.patch'
-	'mcasp-inactive-serializers.patch'
 	'botic-card.patch'
 	'botic-codec.patch'
 	'sabre32-codec.patch'
 	'es9018k2m-codec.patch'
 )
-md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
-         'aed4686410e23561f67f5c512d0a6245'
-         '58e044f59d184dd78acf078e74c0d1a6'
+md5sums=('c99feaade8047339528fb066ec5f8a49'
+         '380185019ba22d3d2eac85b5678729bd'
+         'b9e0fc3ff9fef2a56446dd849eaa5b65'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
-         '629b39476046c2f2a8912ceb2a046ef4'
+         '1d16812d11806835121437211d4451eb'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          '50380efe960555a1eb1671550302927c'
-         'cab3d0679039181f2070cd2f8857e003'
-         'ca102da30f2e488d06516bd8b8987877'
+         'd0cb62a30ac97dd517c4592f6c47255e'
          'db1ded66d885e379f21417024941138d'
          '50dd4b76d9ae1e9c8ceaf520eba48038'
          '4477af3e30440e37a2fb4934b3ef92bb')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  gzip -df ../patch-${pkgver%.0}-${rcnrel}.diff.gz
+  gzip -df ../patch-${rcnver%.0}-${rcnrel}.diff.gz
   
   # add upstream patch
   git apply --whitespace=nowarn "${srcdir}/patch-${pkgver}"
 
   # RCN patch
-  git apply ../patch-${pkgver%.0}-${rcnrel}.diff
+  git apply ../patch-${rcnver%.0}-${rcnrel}.diff
 
   # ALARM patches
   git apply ../0001-add-lcd-cape-for-chiliboard.patch
 
   # BOTIC patches
-  patch -p1 < ../mcasp-dsd.patch
-  patch -p1 < ../mcasp-inactive-serializers.patch
-  patch -p1 < ../botic-codec.patch
   patch -p1 < ../botic-card.patch
+  patch -p1 < ../mcasp-dsd.patch
+  patch -p1 < ../botic-codec.patch
   patch -p1 < ../es9018k2m-codec.patch
   patch -p1 < ../sabre32-codec.patch
 
