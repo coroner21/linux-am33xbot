@@ -67,6 +67,6 @@ Note that the above instructions only work in case of standard default clock fre
 If you have mounted clocks with frequencies different from the above you have to manually edit the dts source file of the overlay you want to use.
 
 Instead of step 4 above, perform the following:
-4a. Run `CARCH=armv7h makepkg -oA` to extract the sources and enter the `src/bb.org-overlays/src/arm` directory
-4b. Edit the `BOTIC-XXX.dts` file to change the frequencies of the two clock definitions `clk48` and `clk44`
-4c. Go back to the root folder of the repository (`linux-am33xbot`) and run `CARCH=armv7h makepkg -eA` to build the package without extracting the sources again.
+- Run `CARCH=armv7h makepkg -oA` to extract the sources and enter the `src/bb.org-overlays/src/arm` directory
+- Edit the `BOTIC-XXX.dts` file to change the frequencies of the two clock definitions `clk48` and `clk44`
+- Go back to the root folder of the repository (`linux-am33xbot`) and run `CARCH=armv7h makepkg -eA` to build the package without extracting the sources again.
