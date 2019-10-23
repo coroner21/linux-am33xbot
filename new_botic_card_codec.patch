@@ -1,6 +1,6 @@
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/botic-codec.c linux-am33x/src/linux-4.19/sound/soc/codecs/botic-codec.c
---- linux-am33x-clean/src/linux-4.19/sound/soc/codecs/botic-codec.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-am33x/src/linux-4.19/sound/soc/codecs/botic-codec.c	2018-12-30 13:55:28.617678223 +0100
+diff '--color=auto' -Naur linux_old/sound/soc/codecs/botic-codec.c linux/sound/soc/codecs/botic-codec.c
+--- linux_old/sound/soc/codecs/botic-codec.c	1970-01-01 01:00:00.000000000 +0100
++++ linux/sound/soc/codecs/botic-codec.c	2019-10-22 13:07:29.565663154 +0200
 @@ -0,0 +1,105 @@
 +/*
 + * ASoC simple sound codec support
@@ -107,9 +107,9 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/botic-codec.c linux
 +MODULE_DESCRIPTION("ASoC Botic sound codec");
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:asoc-botic-codec");
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/Kconfig linux-am33x/src/linux-4.19/sound/soc/codecs/Kconfig
---- linux-am33x-clean/src/linux-4.19/sound/soc/codecs/Kconfig	2018-10-22 08:37:37.000000000 +0200
-+++ linux-am33x/src/linux-4.19/sound/soc/codecs/Kconfig	2018-12-30 13:31:16.394427486 +0100
+diff '--color=auto' -Naur linux_old/sound/soc/codecs/Kconfig linux/sound/soc/codecs/Kconfig
+--- linux_old/sound/soc/codecs/Kconfig	2019-10-22 09:42:49.867572323 +0200
++++ linux/sound/soc/codecs/Kconfig	2019-10-22 13:07:29.565663154 +0200
 @@ -46,6 +46,7 @@
  	select SND_SOC_AK5558 if I2C
  	select SND_SOC_ALC5623 if I2C
@@ -147,9 +147,9 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/Kconfig linux-am33x
  #Freescale sgtl5000 codec
  config SND_SOC_SGTL5000
  	tristate "Freescale SGTL5000 CODEC"
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/Makefile linux-am33x/src/linux-4.19/sound/soc/codecs/Makefile
---- linux-am33x-clean/src/linux-4.19/sound/soc/codecs/Makefile	2018-10-22 08:37:37.000000000 +0200
-+++ linux-am33x/src/linux-4.19/sound/soc/codecs/Makefile	2018-12-30 13:31:16.394427486 +0100
+diff '--color=auto' -Naur linux_old/sound/soc/codecs/Makefile linux/sound/soc/codecs/Makefile
+--- linux_old/sound/soc/codecs/Makefile	2019-10-22 09:42:49.867572323 +0200
++++ linux/sound/soc/codecs/Makefile	2019-10-22 13:07:29.565663154 +0200
 @@ -37,6 +37,7 @@
  snd-soc-ak5386-objs := ak5386.o
  snd-soc-ak5558-objs := ak5558.o
@@ -182,9 +182,9 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/Makefile linux-am33
  obj-$(CONFIG_SND_SOC_SGTL5000)  += snd-soc-sgtl5000.o
  obj-$(CONFIG_SND_SOC_SIGMADSP)	+= snd-soc-sigmadsp.o
  obj-$(CONFIG_SND_SOC_SIGMADSP_I2C)	+= snd-soc-sigmadsp-i2c.o
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/sabre32.c linux-am33x/src/linux-4.19/sound/soc/codecs/sabre32.c
---- linux-am33x-clean/src/linux-4.19/sound/soc/codecs/sabre32.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-am33x/src/linux-4.19/sound/soc/codecs/sabre32.c	2018-12-30 13:53:15.198221392 +0100
+diff '--color=auto' -Naur linux_old/sound/soc/codecs/sabre32.c linux/sound/soc/codecs/sabre32.c
+--- linux_old/sound/soc/codecs/sabre32.c	1970-01-01 01:00:00.000000000 +0100
++++ linux/sound/soc/codecs/sabre32.c	2019-10-22 13:07:29.578998115 +0200
 @@ -0,0 +1,851 @@
 +/*
 + * ESS Technology Sabre32 family Audio DAC support
@@ -1037,9 +1037,9 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/codecs/sabre32.c linux-am3
 +MODULE_DESCRIPTION("ESS Technology Sabre32 Audio DAC");
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:asoc-sabre32-codec");
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/generic/botic-card.c linux-am33x/src/linux-4.19/sound/soc/generic/botic-card.c
---- linux-am33x-clean/src/linux-4.19/sound/soc/generic/botic-card.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-am33x/src/linux-4.19/sound/soc/generic/botic-card.c	2018-12-30 14:13:31.509636838 +0100
+diff '--color=auto' -Naur linux_old/sound/soc/generic/botic-card.c linux/sound/soc/generic/botic-card.c
+--- linux_old/sound/soc/generic/botic-card.c	1970-01-01 01:00:00.000000000 +0100
++++ linux/sound/soc/generic/botic-card.c	2019-10-22 13:07:29.582331856 +0200
 @@ -0,0 +1,502 @@
 +/*
 + * ASoC simple sound card support
@@ -1543,9 +1543,9 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/generic/botic-card.c linux
 +MODULE_DESCRIPTION("ASoC Botic sound card");
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:asoc-botic-card");
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/generic/Kconfig linux-am33x/src/linux-4.19/sound/soc/generic/Kconfig
---- linux-am33x-clean/src/linux-4.19/sound/soc/generic/Kconfig	2018-10-22 08:37:37.000000000 +0200
-+++ linux-am33x/src/linux-4.19/sound/soc/generic/Kconfig	2018-12-30 13:31:16.394427486 +0100
+diff '--color=auto' -Naur linux_old/sound/soc/generic/Kconfig linux/sound/soc/generic/Kconfig
+--- linux_old/sound/soc/generic/Kconfig	2019-10-22 09:42:49.960905085 +0200
++++ linux/sound/soc/generic/Kconfig	2019-10-22 13:07:29.582331856 +0200
 @@ -15,6 +15,20 @@
  	  This option enables generic simple SCU sound card support.
  	  It supports DPCM of multi CPU single Codec system.
@@ -1567,9 +1567,9 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/generic/Kconfig linux-am33
  config SND_AUDIO_GRAPH_CARD
  	tristate "ASoC Audio Graph sound card support"
  	depends on OF
-diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/generic/Makefile linux-am33x/src/linux-4.19/sound/soc/generic/Makefile
---- linux-am33x-clean/src/linux-4.19/sound/soc/generic/Makefile	2018-10-22 08:37:37.000000000 +0200
-+++ linux-am33x/src/linux-4.19/sound/soc/generic/Makefile	2018-12-30 13:31:16.397760748 +0100
+diff '--color=auto' -Naur linux_old/sound/soc/generic/Makefile linux/sound/soc/generic/Makefile
+--- linux_old/sound/soc/generic/Makefile	2019-10-22 09:42:49.960905085 +0200
++++ linux/sound/soc/generic/Makefile	2019-10-22 13:07:29.582331856 +0200
 @@ -4,9 +4,11 @@
  snd-soc-simple-scu-card-objs	:= simple-scu-card.o
  snd-soc-audio-graph-card-objs	:= audio-graph-card.o
@@ -1582,3 +1582,112 @@ diff -Naur linux-am33x-clean/src/linux-4.19/sound/soc/generic/Makefile linux-am3
  obj-$(CONFIG_SND_SIMPLE_SCU_CARD)	+= snd-soc-simple-scu-card.o
  obj-$(CONFIG_SND_AUDIO_GRAPH_CARD)	+= snd-soc-audio-graph-card.o
  obj-$(CONFIG_SND_AUDIO_GRAPH_SCU_CARD)	+= snd-soc-audio-graph-scu-card.o
+diff '--color=auto' -Naur linux_old/src/linux-4.19/sound/soc/codecs/botic-codec.c linux/src/linux-4.19/sound/soc/codecs/botic-codec.c
+--- linux_old/src/linux-4.19/sound/soc/codecs/botic-codec.c	1970-01-01 01:00:00.000000000 +0100
++++ linux/src/linux-4.19/sound/soc/codecs/botic-codec.c	2019-10-22 13:07:05.202265727 +0200
+@@ -0,0 +1,105 @@
++/*
++ * ASoC simple sound codec support
++ *
++ * Miroslav Rudisin <miero@seznam.cz>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ */
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/of_platform.h>
++#include <sound/core.h>
++#include <sound/pcm.h>
++#include <sound/soc.h>
++
++#define BOTIC_CODEC_NAME "botic-codec"
++#define BOTIC_CODEC_DAI_NAME "botic-hifi"
++
++#define BOTIC_RATES SNDRV_PCM_RATE_KNOT
++
++#define BOTIC_FORMATS (\
++            SNDRV_PCM_FMTBIT_S16_LE | \
++            SNDRV_PCM_FMTBIT_S24_3LE | \
++            SNDRV_PCM_FMTBIT_S24_LE | \
++            SNDRV_PCM_FMTBIT_S32_LE | \
++            SNDRV_PCM_FMTBIT_DSD_U8 | \
++            SNDRV_PCM_FMTBIT_DSD_U16_LE | \
++            SNDRV_PCM_FMTBIT_DSD_U32_LE | \
++            0)
++
++static struct snd_soc_dai_driver botic_codec_dai = {
++    .name = BOTIC_CODEC_DAI_NAME,
++    .playback = {
++        .channels_min = 2,
++        .channels_max = 8,
++        .rate_min = 22050,
++        .rate_max = 384000,
++        .rates = BOTIC_RATES,
++        .formats = BOTIC_FORMATS,
++    },
++    .capture = {
++        .channels_min = 2,
++        .channels_max = 8,
++        .rate_min = 22050,
++        .rate_max = 384000,
++        .rates = BOTIC_RATES,
++        .formats = BOTIC_FORMATS,
++    },
++};
++
++static const struct snd_kcontrol_new botic_codec_controls[] = {
++    /* Dummy controls for some applications that requires ALSA controls. */
++    SOC_DOUBLE("Master Playback Volume", 0, 0, 0, 32, 1),
++    SOC_SINGLE("Master Playback Switch", 1, 0, 1, 1),
++};
++
++static unsigned int botic_codec_read(struct snd_soc_component *component,
++        unsigned int reg)
++{
++    return 0;
++}
++
++static int botic_codec_write(struct snd_soc_component *component,
++        unsigned int reg, unsigned int val)
++{
++    return 0;
++}
++
++static struct snd_soc_component_driver botic_codec_socdrv = {
++    .read = botic_codec_read,
++    .write = botic_codec_write,
++    .controls = botic_codec_controls,
++    .num_controls = ARRAY_SIZE(botic_codec_controls),
++};
++
++static int asoc_botic_codec_probe(struct platform_device *pdev)
++{
++    return snd_soc_register_component(&pdev->dev,
++            &botic_codec_socdrv, &botic_codec_dai, 1);
++}
++
++#if defined(CONFIG_OF)
++static const struct of_device_id asoc_botic_codec_dt_ids[] = {
++    { .compatible = "botic-audio-codec" },
++    { },
++};
++
++MODULE_DEVICE_TABLE(of, asoc_botic_codec_dt_ids);
++#endif
++
++static struct platform_driver asoc_botic_codec_driver = {
++    .probe = asoc_botic_codec_probe,
++    .driver = {
++        .name = "asoc-botic-codec",
++        .of_match_table = of_match_ptr(asoc_botic_codec_dt_ids),
++    },
++};
++
++module_platform_driver(asoc_botic_codec_driver);
++
++MODULE_AUTHOR("Miroslav Rudisin");
++MODULE_DESCRIPTION("ASoC Botic sound codec");
++MODULE_LICENSE("GPL");
++MODULE_ALIAS("platform:asoc-botic-codec");

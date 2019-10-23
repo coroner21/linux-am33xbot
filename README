@@ -1,0 +1,129 @@
+---------------
+BBB pin mapping
+---------------
+
+P9_25 - A14/0 - mcasp0_ahclkx (oscillator) - GPIO3_21
+P9_31 - A13/0 - mcaps0_aclkx (bit clock) - SPI1_SCLK
+P9_29 - B13/0 - mcasp0_fsx (lr clock) - SPI1_D0
+P9_30 - D12/0 - mcasp0_axr0 (data0) - SPI1_D1
+P9_41 - D13/0 - mcasp0_axr1 (data1) - GPIO3_20 shared pin with D14
+P9_42 - B12/2 - mcasp0_axr2 (data2) - GPIO3_18
+P9_27 - C13/2 - mcasp0_axr3 (data3) - GPIO3_19
+P9_24 - D15/7 - uart1_txd (external masterclock switch) - GPIO0_15
+P9_26 - D16/7 - uart1_rxd (I2S/DSD format switch)- GPIO0_14
+P9_14 - U14/7 - gpmc_a2 (cape power switch) - EHRPWM1A
+
+GND is available on any of these pins P9_{01,02,43,44,45,46}.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!   Notice:
+!!!!!!!!!!!!!
+!   The current driver shuts down the "cape power switch" right before BBB power down.
+!   This might not be safe for BBB if cape does not shut down immediatelly too.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+--------------------
+Clocks configuration
+--------------------
+
+Installed clocks are configurable via:
+   - kernel option snd_soc_botic.ext_masterclk
+
+Examples:
+    0 ... no external clocks, just onboard for 48k freq
+    1 ... external clock for 44k1 + onboard for 48k
+    2 ... external clock for 48k only
+    3 ... external clocks for 44k1 and 48k (default)
+   +4 ... invert polarity of clock selection switch GPIO0_15
+    9 ... external clock for 44k1 only
+
+
+-------------------------------
+DSD format switch configuration
+-------------------------------
+
+DSD format switch can be configured via:
+   - kernel option snd_soc_botic.dsd_format_switch
+
+Examples:
+    0 ... DSD switch is disabled
+    1 ... DSD switch is enabled (default)
+   +2 ... invert polarity of format selection switch GPIO0_14
+
+
+----------------------
+Channels configuration
+----------------------
+
+The BBB has 4 serializers and each one is capable to generate:
+    - one stereo I2S channel
+    - one mono DSD channel
+
+Depending on the audio stream the driver will switch automatically between I2S and DSD
+and trigger the GPIO DSD format switch to ensure that the downstream Hermes / Cronus
+have the right channel mapping (L/R clock used as DSD input signal on ESS Sabre DACs).
+
+
+----------
+DAI format
+----------
+
+Clock source and polarity for I2S mode is configurable via:
+   - kernel option snd_soc_botic.dai_format
+   - file /sys/module/snd_soc_botic/parameters/dai_format
+
+Supported values:
+    +1 ... I2S mode
+    +2 ... Right Justified mode (LSB) -- BUG: does not work in botic4; fixed in botic5
+    +3 ... Left Justified mode (MSB)
+    +4 ... L data MSB after FRM LRC
+    +5 ... L data MSB during FRM LRC
+
+    +0 ... NB_NF: normal BCLK & LRCK
+    +512 ... NB_IF: normal BCLK, inverted LRCK
+    +768 ... IB_NF: inverted BCLK, normal LRCK
+    +1024 ... IB_IF: inverted BCLK & LRCK
+
+    +4096 ... CBM_CFM: DAC is BCLK & LRCK master
+    +8192 ... CBS_CFM: DAC is BCLK slave, LRCK master
+    +12288 ... CBM_CFS: DAC is BCLK master, LRCK slave
+    +16384 ... CBS_CFS: DAC is BCLK & LRCK slave
+
+Default value: I2S + NB_NF + CBS_CFS
+
+Change via file is active on the next playback start.
+
+
+--------------------------------
+External masterclock frequencies
+--------------------------------
+
+External masterclock frequency for 44k1 is configurable via:
+   - kernel option snd_soc_botic.clk_44k1
+   - file /sys/module/snd_soc_botic/parameters/clk_44k1
+
+Default value: 45158400
+
+
+External masterclock frequency for 48k is configurable via:
+   - kernel option snd_soc_botic.clk_48k
+   - file /sys/module/snd_soc_botic/parameters/clk_48k
+
+Default value: 49152000
+
+Configured values should be multiples of standard audio frequencies.
+
+Playback is disabled if the value is set to 0.
+
+
+----------------------
+Force BCLK/LRCLK ratio
+----------------------
+
+This ratio is configurable via:
+   - kernel option snd_soc_botic.blr_ratio
+   - file /sys/module/snd_soc_botic/parameters/blr_ratio
+
+For I2S mode default value is 64.
+
+Other valid values are 32 and 48 (and maybe others).
