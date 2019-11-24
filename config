@@ -1,13 +1,13 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.19.73 Kernel Configuration
+# Linux/arm 4.19.79 Kernel Configuration
 #
 
 #
-# Compiler: arm-linux-gnueabihf-gcc (Linaro GCC 7.4-2019.02) 7.4.1 20181213 [linaro-7.4-2019.02 revision 56ec6f6b99cc167ff0c2f8e1a2eed33b1edc85d4]
+# Compiler: gcc (GCC) 9.2.0
 #
 CONFIG_CC_IS_GCC=y
-CONFIG_GCC_VERSION=70401
+CONFIG_GCC_VERSION=90200
 CONFIG_CLANG_VERSION=0
 CONFIG_CC_HAS_ASM_GOTO=y
 CONFIG_IRQ_WORK=y
@@ -5971,6 +5971,7 @@ CONFIG_RFD77402=m
 CONFIG_SRF04=m
 CONFIG_SX9500=m
 CONFIG_SRF08=m
+CONFIG_VL53L0X_I2C=m
 
 #
 # Resolver to digital converters
@@ -6016,7 +6017,7 @@ CONFIG_RESET_TI_SYSCON=y
 #
 CONFIG_GENERIC_PHY=y
 # CONFIG_BCM_KONA_USB2_PHY is not set
-# CONFIG_PHY_CADENCE_DP is not set
+# CONFIG_PHY_CADENCE_TORRENT is not set
 # CONFIG_PHY_CADENCE_SIERRA is not set
 # CONFIG_PHY_PXA_28NM_HSIC is not set
 # CONFIG_PHY_PXA_28NM_USB2 is not set
