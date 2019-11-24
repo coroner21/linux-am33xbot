@@ -1,4 +1,4 @@
-**Instructions on building a kernel for debian buster based images (to be executed on a debian x86-64 machine with ARM cross compiler installed)
+## Instructions on building a kernel for debian buster based images (to be executed on a debian x86-64 machine with ARM cross compiler installed)
 
 1. Clone the debian-buster branch of this repository with git ``git clone -b debian-buster https://github.com/coroner21/linux-am33xbot.git`` and enter the created directory
 2. Clone the official beagleboard.org kernel repositories (4.19 branch) ``git clone -b 4.19 --depth 1 https://github.com/beagleboard/linux.git``
