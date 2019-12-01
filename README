@@ -64,36 +64,6 @@ and trigger the GPIO DSD format switch to ensure that the downstream Hermes / Cr
 have the right channel mapping (L/R clock used as DSD input signal on ESS Sabre DACs).
 
 
-----------
-DAI format
-----------
-
-Clock source and polarity for I2S mode is configurable via:
-   - kernel option snd_soc_botic.dai_format
-   - file /sys/module/snd_soc_botic/parameters/dai_format
-
-Supported values:
-    +1 ... I2S mode
-    +2 ... Right Justified mode (LSB) -- BUG: does not work in botic4; fixed in botic5
-    +3 ... Left Justified mode (MSB)
-    +4 ... L data MSB after FRM LRC
-    +5 ... L data MSB during FRM LRC
-
-    +0 ... NB_NF: normal BCLK & LRCK
-    +512 ... NB_IF: normal BCLK, inverted LRCK
-    +768 ... IB_NF: inverted BCLK, normal LRCK
-    +1024 ... IB_IF: inverted BCLK & LRCK
-
-    +4096 ... CBM_CFM: DAC is BCLK & LRCK master
-    +8192 ... CBS_CFM: DAC is BCLK slave, LRCK master
-    +12288 ... CBM_CFS: DAC is BCLK master, LRCK slave
-    +16384 ... CBS_CFS: DAC is BCLK & LRCK slave
-
-Default value: I2S + NB_NF + CBS_CFS
-
-Change via file is active on the next playback start.
-
-
 --------------------------------
 External masterclock frequencies
 --------------------------------
