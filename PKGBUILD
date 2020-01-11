@@ -7,7 +7,7 @@ pkgbase=linux-am33xbot
 _srcname=linux-5.4
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.4.6
+pkgver=5.4.8
 pkgrel=1
 rcnver=5.4.5
 rcnrel=bone13
@@ -31,11 +31,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'es9018k2m-codec.patch'
 )
 md5sums=('ce9b2d974d27408a61c53a30d3f98fb9'
-         '9f348b83af2fd13db31b7595aded4846'
+         '8a52a7d0df38cf464b85bfb1bedfcb72'
          '51bc193c63dfa38e3b2351bf08aef26c'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
-         'ad636197ac782b0b145f065d893ead4e'
+         'de930594cbb4bf542c004e558aad4bfe'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          'eed609d043f41e86a7a48486bee14564'
