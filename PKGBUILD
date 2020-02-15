@@ -4,13 +4,13 @@
 buildarch=4
 
 pkgbase=linux-am33xbot
-_srcname=linux-5.4
+_srcname=linux-5.5
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=5.4.10
+pkgver=5.5.3
 pkgrel=1
-rcnver=5.4.5
-rcnrel=bone13
+rcnver=5.5.2
+rcnrel=bone7
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -30,18 +30,18 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'sabre32-codec.patch'
 	'es9018k2m-codec.patch'
 )
-md5sums=('ce9b2d974d27408a61c53a30d3f98fb9'
-         'd7b2437393754d4e8fc395f71a7b87d5'
-         '51bc193c63dfa38e3b2351bf08aef26c'
+md5sums=('0a78b1dc48dc032fe505b170c1b92339'
+         'd662da88d60fdf9bacdefb1afde3f627'
+         '1142ece18627c80fb5304e5e08a51793'
          'SKIP'
          'ee16bcdbbf978e714455933ecd6dd8fe'
-         'de930594cbb4bf542c004e558aad4bfe'
+         '664eed4c7b4af852690c397a41fd1cb8'
          '78ccc998f27eec49a9d5490218b1b1ab'
          '79fa396e3f9a09a85156d6d7c2d34b58'
          'eed609d043f41e86a7a48486bee14564'
          'd0cb62a30ac97dd517c4592f6c47255e'
          'db1ded66d885e379f21417024941138d'
-         '50dd4b76d9ae1e9c8ceaf520eba48038'
+         'fa99f839d97b44e1ac82f9412fb1cd46'
          '4477af3e30440e37a2fb4934b3ef92bb')
 
 prepare() {
@@ -62,7 +62,7 @@ prepare() {
   patch -p1 < ../mcasp-dsd.patch
   patch -p1 < ../botic-codec.patch
   patch -p1 < ../es9018k2m-codec.patch
-  patch -p1 < ../sabre32-codec.patch
+  #patch -p1 < ../sabre32-codec.patch
 
   cat "${srcdir}/config" > ./.config
 
