@@ -62,7 +62,7 @@ prepare() {
   patch -p1 < ../mcasp-dsd.patch
   patch -p1 < ../botic-codec.patch
   patch -p1 < ../es9018k2m-codec.patch
-  #patch -p1 < ../sabre32-codec.patch
+  patch -p1 < ../sabre32-codec.patch
 
   cat "${srcdir}/config" > ./.config
 
